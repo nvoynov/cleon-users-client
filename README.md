@@ -1,44 +1,30 @@
 # UsersClient
 
-The `UsersClient` gem demonstrate how to create a library for [UsersAPI]().
+The `UsersClient` is just a demo gem to demonstrate how to create API client library for [UsersAPI](https://github.com/nvoynov/cleon-users-api).
 
-Having in mind that the `UsersAPI` client serves as HTTP/JSON API face for [Users Domain](), which in turn is built using [Cleon](), one can utilize bunch of ready to use code from `Users Domain` (argument guards and entities).
+* [UsersAPI](https://github.com/nvoynov/cleon-users-api)
+* [Users](https://github.com/nvoynov/cleon-users)
+* [Cleon](https://github.com/nvoynov/cleon)
 
-Therefore this gem code mainly provide function of calling methods of HTTP/JSON face. These methods just do some simple porting HTTP calls work:
+The hart of the client is `ServicePort` class that utilizes `Typhoeus` for making HTTP requests. Library methods inside UsersClient just pass its arguments to appropriate service port.
 
-- guard arguments according to UsersDomain constraints;
-- translate arguments into JSON Body or parameters;
-- call the appropriate method of UsersAPI;
-- and translate the call response into UsersDomain.
+Because [Users](https://github.com/nvoynov/cleon-users) domain created with Cleon's structure inside, you can easily enforce the API client by
 
-So, the structure is simple enough:
-
-- `lib/users_client.rb` - contains main UsersDomain functions;
-- `lib/users_client/ports.rb` - just gather all the following ports;
-- `lib/users_client/version.rb` - important stuff to match UsersAPI version;
-- `lib/users_client/ports/register_user_port.rb`
-- `lib/users_client/ports/authenticate_user_port.rb`
-- `lib/users_client/ports/change_user_password_port.rb`
-- `lib/users_client/ports/select_users_port.rb`
-
-CircutBracker?
-JWT Authentication?
+- guarding arguments to prevent making wrong calls - just copy it from target domain;
+- and using ready-to-use entities from the domain - just copy it from target domain.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'users_client', git: '...'
-```
-
-And then execute:
-
-    $ bundle install
+    $ git clone https://github.com/nvoynov/cleon-users-client
 
 ## Usage
 
-TODO: Write usage instructions here
+A bit cumbersome ...
+
+1. Clone [Users Domain](https://github.com/nvoynov/cleon-users)
+2. Clone [Users API](https://github.com/nvoynov/cleon-users-api)
+3. Install "Users API" following [README](https://github.com/nvoynov/cleon-users-api/README.md#installation) and start the service
+4. Clone the repository and run tests
 
 ## Development
 
